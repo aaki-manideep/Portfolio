@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Portfolio.css';
 import { SKILLS } from '../data/data';
-import SectionTag from '../shared/SectionTag';
+import SectionTag from '../shared/sectiontag';
 
 export default function Skills() {
   return (

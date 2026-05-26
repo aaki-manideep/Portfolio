@@ -1,6 +1,6 @@
 import React from "react";
 import "../Portfolio.css";
-import SectionTag from "../shared/SectionTag";
+import SectionTag from "../shared/sectiontag";
 
 export default function Contact() {
   return (

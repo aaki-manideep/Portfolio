@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Portfolio.css';
-import SectionTag from '../shared/SectionTag';
+import SectionTag from '../shared/sectiontag';
 import ExperienceCard from './ExperienceCard';
 import { EXPERIENCES } from '../data/data';
 
