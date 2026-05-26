@@ -10,6 +10,10 @@ portfolio-jsx/
 ├── package.json
 ├── vite.config.js
 └── src/
+    ├── assets          # Asset section
+    ├── componets       # all section inculdes Navbar, Hero, About, Skills, Highlights, Experience, Eduction, Contanct
+    ├── data            # Static data
+    ├── shared          # Common shared file
     ├── index.jsx       # React entry point
     ├── App.jsx         # Root component
     ├── Portfolio.jsx   # Full portfolio (all sections + data)
@@ -38,7 +42,7 @@ All content lives at the top of `Portfolio.jsx` as plain JS arrays/objects:
 
 - `STATS`        — 4 hero stat numbers
 - `SKILLS`       — skill groups and tags
-- `HIGHLIGHTS`   — 3 impact cards
+- `HIGHLIGHTS`   — 9 impact cards
 - `EXPERIENCES`  — job roles, bullets, stack tags
 
 Edit those arrays and the page updates automatically.
