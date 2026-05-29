@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://manideep-aaki.netlify.app/sitemap.xml
