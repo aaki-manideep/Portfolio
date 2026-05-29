@@ -166,12 +166,31 @@ nav, section, footer, hr, .cursor-dot, .cursor-ring {
 /* ── Hero ── */
 .hero {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  grid-template-rows: 1fr auto;
+  align-items: center;
   padding: 8rem 2.5rem 5rem;
   position: relative;
   overflow: hidden;
+  gap: 0 2rem;
+}
+.hero-left-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-column: 1;
+  grid-row: 1;
+}
+.hero-visual {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+}
+.hero-scroll {
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 .hero-glow {
   position: absolute;
@@ -338,7 +357,7 @@ section {
 .section-heading {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 650;
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: 3.5rem;
@@ -389,13 +408,11 @@ section {
   align-items: center;
   gap: 0.45rem;
 }
-
 .detail-icon {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
 }
-
 .detail-icon svg {
   width: 13px;
   height: 13px;
@@ -751,11 +768,147 @@ section {
   50%       { width: 18px; opacity: 0.4; }
 }
 
-/* ── Responsive ── */
+/* ── Hero Orbital Visual ── */
+.hero-visual {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.orbit-glow {
+  position: absolute; inset: -10px; border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(0,229,195,0.15), rgba(0,149,255,0.08), rgba(0,229,195,0.15));
+  animation: orbitGlow 8s linear infinite;
+  filter: blur(12px);
+  pointer-events: none;
+}
+@keyframes orbitGlow { to { transform: rotate(360deg); } }
+
+.orbit-track {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1.5px dashed rgba(0,229,195,0.2);
+  animation: orbitSpin 22s linear infinite;
+  pointer-events: none;
+}
+@keyframes orbitSpin { to { transform: rotate(360deg); } }
+
+.orbit-ring {
+  position: absolute; inset: 14px; border-radius: 50%;
+  border: 1px solid rgba(0,229,195,0.08);
+  pointer-events: none;
+}
+
+/* Photo */
+.photo-circle {
+  position: relative; z-index: 5;
+  width: 170px; height: 170px; border-radius: 50%;
+  border: 2px solid rgba(0,229,195,0.4);
+  overflow: hidden;
+  box-shadow: 0 0 0 8px rgba(0,229,195,0.05), 0 0 50px rgba(0,229,195,0.12);
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+}
+.photo-circle img { width: 100%; height: 100%; object-fit: cover; }
+.photo-placeholder {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* Status badge */
+.status-badge {
+  position: absolute; bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 6; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500; letter-spacing: .06em;
+  padding: 5px 14px; border-radius: 20px;
+  background: rgba(0,229,195,0.1);
+  border: 1px solid rgba(0,229,195,0.3);
+  color: var(--accent);
+  font-family: var(--font-body);
+}
+.pulse-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  animation: pulseDot 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulseDot {
+  0%,100% { opacity:1; transform: scale(1); }
+  50%      { opacity:.4; transform: scale(.7); }
+}
+
+/* ── Skill Nodes — wrapper technique ──
+   Each .orbit-wrapper rotates from its own --offset angle.
+   The .skill-node is translated outward and never moves itself.
+   The icon counter-rotates to stay upright.
+─────────────────────────────────────────── */
+.orbit-wrapper {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  transform: rotate(var(--offset));
+  animation: orbitSpin 22s linear infinite;
+  z-index: 6;
+}
+
+.skill-node {
+  position: absolute;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  top: -22px; left: -22px;
+  transform: translateX(150px);
+  background: var(--bg);
+  border: 1px solid rgba(0,229,195,0.25);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: border-color .25s, box-shadow .25s;
+}
+.skill-node:hover {
+  border-color: rgba(0,229,195,0.8);
+  box-shadow: 0 0 16px rgba(0,229,195,0.3);
+}
+
+/* Counter-rotate icon so it stays upright */
+.skill-node-inner {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+  font-size: 16px;
+  animation: counterSpin 22s linear infinite;
+}
+@keyframes counterSpin { to { transform: rotate(-360deg); } }
+
+/* Tooltip */
+.skill-node::after {
+  content: attr(data-label);
+  position: absolute; bottom: -24px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px; font-weight: 500; letter-spacing: .05em;
+  color: var(--accent); white-space: nowrap;
+  opacity: 0; transition: opacity .2s;
+  font-family: var(--font-body);
+  pointer-events: none;
+  animation: counterSpin 22s linear infinite;
+}
+.skill-node:hover::after { opacity: 1; }
+
+
 @media (max-width: 768px) {
   .navbar { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
-  .hero { padding: 7rem 1.5rem 4rem; }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 4rem;
+  }
+  .hero-left-content { grid-column: 1; grid-row: 1; }
+  .hero-visual { display: none; }
+  .hero-scroll { grid-column: 1; }
   .hero-stats { gap: 1.75rem; }
   section { padding: 5rem 1.5rem; }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -770,4 +923,47 @@ section {
 }
 @media (max-width: 480px) {
   .highlights-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Back to Top ── */
+.back-to-top {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  z-index: 200;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  background: var(--bg);
+  border: 1px solid rgba(0, 229, 195, 0.35);
+  color: var(--accent);
+
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+  cursor: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease,
+  background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.back-to-top:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 229, 195, 0.2);
 }

@@ -10,6 +10,22 @@ export default function ExperienceCard({ exp, cardIndex }) {
 
   const toggle = () => setOpen((o) => !o);
 
+  function getDuration(startDate) {
+    const start = new Date(startDate);
+    const now = new Date();
+
+    const totalMonths =
+      (now.getFullYear() - start.getFullYear()) * 12 +
+      (now.getMonth() - start.getMonth());
+
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+
+    if (years === 0) return `${months} mos`;
+    if (months === 0) return `${years} yr${years > 1 ? "s" : ""}`;
+    return `${years} yr${years > 1 ? "s" : ""} ${months} mos`;
+  }
+
   return (
     <div className="reveal exp-card-wrapper">
       <div className={`exp-card${open ? " exp-card--open" : ""}`}>
@@ -18,7 +34,7 @@ export default function ExperienceCard({ exp, cardIndex }) {
         <button className="exp-card-header" onClick={toggle} aria-expanded={open}>
 
         <div className="exp-card-meta">
-          <span className="exp-card-period">{exp.period}</span>
+          <span className="exp-card-period">{exp.period}<br />{getDuration(exp.time)}</span>
           <span className="exp-card-company">{exp.company}</span>
         </div>
 
