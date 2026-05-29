@@ -22,7 +22,7 @@ function HeroVisual() {
 
       {/* Photo circle */}
       <div className="photo-circle">
-        <span className="photo-placeholder">MA</span>
+        <span className="photo-placeholder"><img src="/manideep_aaki_logo.svg" alt="Manideep Aaki" /></span>
       </div>
 
       {/* Status badge */}
@@ -55,12 +55,12 @@ export default function Hero() {
 
       {/* ── LEFT: text content ── */}
       <div className="hero-left-content">
-        <div className="hero-eyebrow">Frontend Engineer · Hyderabad, India</div>
+        <div className="hero-eyebrow">Software Engineer · Hyderabad, India</div>
         <h1 className="hero-name">
           Manideep<br /><em>Aaki</em>
         </h1>
         <p className="hero-title">
-          <strong>Senior Frontend Engineer</strong> — React · Node.js · GraphQL<br />
+          <strong>Software Engineer</strong> — React · Node.js · GraphQL<br />
           Building scalable web products for 500,000+ users
         </p>
         <div className="hero-stats">
