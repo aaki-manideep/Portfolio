@@ -78,7 +78,7 @@ function HeroVisual() {
 
       {/* Photo circle */}
       <div className="photo-circle">
-        <span className="photo-placeholder"><img src="/manideep_aaki_logo.svg" alt="Manideep Aaki" /></span>
+        <span className="photo-placeholder"><img src="/manideep_profile.jpeg" alt="Manideep Aaki" /></span>
       </div>
 
       {/* Status badge */}
