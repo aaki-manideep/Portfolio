@@ -1,34 +1,141 @@
 import React from "react";
 import "../Portfolio.css";
-import { STATS, SKILLS, HIGHLIGHTS, EXPERIENCES } from "../data/data";
+import { STATS } from "../data/data";
+
+function HeroVisual() {
+ const nodes = [
+  {
+    label: "React", offset: "0deg",
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#61dafb">
+        <path d="M12 10.11A1.89 1.89 0 1 1 10.11 12 1.89 1.89 0 0 1 12 10.11M7.37 20c.63.38 2-.2 3.6-1.7a24.22 24.22 0 0 1-1.51-1.9A22.7 22.7 0 0 1 7.06 16c-.51 2.14-.32 3.61.31 4m.71-5.74-.29-.51a7.91 7.91 0 0 0-.29.86c.27.06.57.11.88.16l-.3-.51m6.54-.76.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9s-1.17 0-1.71.03c-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47.54.03 1.11.03 1.71.03s1.17 0 1.71-.03c.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7.53.51 1.06 1.18 1.51 1.9.82.08 1.63.2 2.4.39.51-2.14.32-3.61-.32-4m-.7 5.74.29.51c.11-.29.21-.58.29-.86-.27-.06-.57-.11-.88-.16l.3.51m1.45-7.05c1.47.84 1.63 3.05 1.01 5.63 2.54.75 4.37 1.99 4.37 3.68s-1.83 2.93-4.37 3.68c.62 2.58.46 4.79-1.01 5.63-1.46.84-3.45-.12-5.37-1.95-1.92 1.83-3.91 2.79-5.38 1.95-1.46-.84-1.62-3.05-1-5.63-2.54-.75-4.37-1.99-4.37-3.68s1.83-2.93 4.37-3.68c-.62-2.58-.46-4.79 1-5.63 1.47-.84 3.46.12 5.38 1.95 1.92-1.83 3.91-2.79 5.37-1.95z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "Node.js", offset: "45deg",
+    icon: (
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="#68a063">
+        <path d="M16 30a2.151 2.151 0 0 1-1.076-.288L11.5 27.685c-.511-.286-.262-.387-.093-.446a6.828 6.828 0 0 0 1.549-.7.263.263 0 0 1 .255.019l2.631 1.563a.34.34 0 0 0 .318 0l10.26-5.922a.323.323 0 0 0 .157-.278V10.075a.331.331 0 0 0-.159-.283L16.318 3.875a.323.323 0 0 0-.317 0L5.743 9.793a.33.33 0 0 0-.161.284v11.843a.315.315 0 0 0 .161.274l2.814 1.627c1.529.765 2.463-.136 2.463-1.043V11.061a.3.3 0 0 1 .3-.3h1.3a.3.3 0 0 1 .3.3v11.717c0 2.041-1.111 3.21-3.045 3.21a4.39 4.39 0 0 1-2.364-.643L4.661 23.72a2.166 2.166 0 0 1-1.076-1.875V10.075A2.162 2.162 0 0 1 4.661 8.2l10.261-5.924a2.246 2.246 0 0 1 2.153 0L27.336 8.2a2.165 2.165 0 0 1 1.077 1.875v11.843a2.171 2.171 0 0 1-1.077 1.875L17.076 29.716A2.159 2.159 0 0 1 16 30zm3.302-8.131c-4.49 0-5.423-2.061-5.423-3.791a.3.3 0 0 1 .3-.3h1.326a.3.3 0 0 1 .3.256c.2 1.370 .8 2.061 3.5 2.061 2.153 0 3.069-.487 3.069-1.629 0-.658-.261-1.148-3.608-1.476-2.800-.278-4.528-.9-4.528-3.144 0-2.070 1.745-3.305 4.67-3.305 3.286 0 4.909 1.139 5.12 3.589a.3.3 0 0 1-.077.224.315.315 0 0 1-.219.093h-1.332a.3.3 0 0 1-.293-.241c-.32-1.419-1.1-1.875-3.2-1.875-2.357 0-2.631.82-2.631 1.435 0 .745.324 1.506 3.614 1.629 3.257.121 4.522.965 4.522 3.173-.007 2.249-1.875 3.301-5.11 3.301z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "GraphQL", offset: "90deg",
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#e535ab">
+        <path d="M14.051 2.751l4.935 2.85c.816-.585 1.993-.586 2.81 0a2.05 2.05 0 0 1 0 3.45l-.001 5.701c.817.585.817 1.864.001 2.449a2.08 2.08 0 0 1-2.811 0l-4.934 2.85a2.042 2.042 0 0 1-.374 2.435 2.081 2.081 0 0 1-2.811 0 2.042 2.042 0 0 1-.374-2.435l-4.934-2.85a2.08 2.08 0 0 1-2.811 0 2.042 2.042 0 0 1 0-2.449l-.001-5.7a2.042 2.042 0 0 1 0-3.451 2.08 2.08 0 0 1 2.811 0l4.934-2.85a2.042 2.042 0 0 1 .374-2.436 2.081 2.081 0 0 1 2.811 0c.626.604.739 1.533.374 2.436zM12 3.414l-6.496 3.75v7.5L12 18.413l6.496-3.75v-7.5L12 3.414zm0 2.404l4.875 2.813v5.626L12 17.058l-4.875-2.8V8.63L12 5.818zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 1.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "JavaScript", offset: "135deg",
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#f7df1e">
+        <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "Git", offset: "180deg",
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#f05032">
+        <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.608-.406-.545-.545-.676-1.344-.396-2.005L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "Azure", offset: "225deg",
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#0089d6">
+        <path d="M13.05 4.24L6.56 18.05l-3.91.07 5.2-9.05L13.05 4.24zm.88.8l4.14 12.3-9.13.18 7.15-1.25-2.16-11.23z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "CSS3", offset: "270deg",
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#264de4">
+        <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.413z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "Angular", offset: "315deg",
+    icon: (
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#dd0031">
+        <path d="M9.931 12.645h4.138l-2.07-4.908m0-7.737L.68 3.982l1.726 14.771L12 24l9.596-5.242L23.32 3.982 11.999.00zM20.6 18.32l-8.6 4.717-8.6-4.717-1.55-13.26L12 1.4l10.15 3.66L20.6 18.32z"/>
+      </svg>
+    ),
+  },
+  ];
+
+  return (
+    <div className="hero-visual">
+      <div className="orbit-glow" />
+      <div className="orbit-track" />
+      <div className="orbit-ring" />
+
+      {/* Photo circle */}
+      <div className="photo-circle">
+        <span className="photo-placeholder"><img src="/manideep_profile.jpeg" alt="Manideep Aaki" /></span>
+      </div>
+
+      {/* Status badge */}
+      <div className="status-badge">
+        <span className="pulse-dot" />
+        Open to work
+      </div>
+
+      {/* Each wrapper rotates independently, keeping its offset */}
+      {nodes.map(({ label, icon, offset }) => (
+        <div
+          key={label}
+          className="orbit-wrapper"
+          style={{ "--offset": offset }}
+        >
+          <div className="skill-node" data-label={label}>
+            <div className="skill-node-inner">{icon}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function Hero() {
-  return (
+ return (
     <section id="hero" className="hero">
       <div className="hero-glow" />
       <div className="hero-glow2" />
-      <div className="hero-eyebrow">Software Engineer · Hyderabad, India</div>
-      <h1 className="hero-name">
-        Manideep<br /><em>Aaki</em>
-      </h1>
-      <p className="hero-title">
-        <strong>Software Engineer</strong> — React · Node.js · GraphQL
 
-        Building scalable web products for 500,000+ users
-      </p>
-      <div className="hero-stats">
-        {STATS.map((s, i) => (
-          <div key={`stat-${i}`} className="stat-item">
-            <span className="stat-num">{s.num}</span>
-            <span className="stat-label">{s.label}</span>
-          </div>
-        ))}
+      {/* ── LEFT: text content ── */}
+      <div className="hero-left-content">
+        <div className="hero-eyebrow">Software Engineer · Hyderabad, India</div>
+        <h1 className="hero-name">
+          Manideep<br /><em>Aaki</em>
+        </h1>
+        <p className="hero-title">
+          <strong>Software Engineer</strong> — React · Node.js · GraphQL<br />
+          Building scalable web products for 500,000+ users
+        </p>
+        <div className="hero-stats">
+          {STATS.map((s, i) => (
+            <div key={`stat-${i}`} className="stat-item">
+              <span className="stat-num">{s.num}</span>
+              <span className="stat-label">{s.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="hero-cta">
+          <a href="#experience" className="btn-primary">View my work ↓</a>
+          <a href="mailto:aaki.manideep2@gmail.com" className="btn-ghost">Get in touch</a>
+        </div>
       </div>
-      <div className="hero-cta">
-        <a href="#experience" className="btn-primary">View my work ↓</a>
-        <a href="mailto:aaki.manideep2@gmail.com" className="btn-ghost">Get in touch</a>
-        {/* <a href={resume} target="_blank" rel="noreferrer" className="btn-ghost">Resume</a> */}
-      </div>
+
+      {/* ── RIGHT: orbital visual ── */}
+      <HeroVisual />
+
       <div className="hero-scroll">
         <span className="scroll-line" />
         Scroll

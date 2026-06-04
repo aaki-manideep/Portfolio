@@ -68,6 +68,26 @@ function MAWatermark() {
   );
 }
 
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <button
+      className={`back-to-top${visible ? " visible" : ""}`}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Back to top"
+    >
+      ↑
+    </button>
+  );
+}
+
 
 export default function Portfolio() {
   const [scrolled, setScrolled] = useState(false);
@@ -98,6 +118,7 @@ export default function Portfolio() {
       <Education />
       <hr className="full-divider" />
       <Contact />
+      <BackToTop />
 
       <footer className="footer">
         <span>2026 Manideep Aaki</span>

@@ -105,6 +105,7 @@ export const HIGHLIGHTS = [
 export const EXPERIENCES = [
   {
     period: "Feb 2021 — Present",
+    time:"2021-02-01",
     company: "ITD Tech",
     role: "Software Engineer",
     project: "Microsoft Community",
@@ -116,11 +117,16 @@ export const EXPERIENCES = [
       "Built one-time data migration scripts to map existing data fields and unlock newly introduced platform features, reducing manual effort and accelerating adoption.",
       "Supported multilingual and regional accessibility capabilities, enabling inclusive experiences across different geographies and languages.",
       "Operated within an Agile (Azure DevOps) workflow — requirement gathering, development, unit testing, deployment, and post-release production support.",
+      "Collaborated closely with cross-functional teams including product management, design, QA, and client stakeholders to deliver high-quality solutions that meet business needs and exceed expectations.",
+      "Attending to client-reported issues, triaging, debugging, and delivering timely resolutions to maintain 100% production uptime and high client satisfaction.",
+      "To support the co-workers and the team, I have also created documentation for the new features and components developed, and conducted knowledge-sharing sessions to onboard team members to the new architecture and best practices.",
+      "Collaborated with clients and cross-functional teams to diagnose legacy system bottlenecks; designed and deployed intelligent caching and batching strategies within Microsoft Community clients to optimize performance.",
     ],
     stack: ["React.js", "AngularJS", "Node.js", "GraphQL", "FreeMarker", "JavaScript", "jQuery", "Azure DevOps", "Git"],
   },
   {
     period: "Jan 2021 — Present",
+    time:"2021-01-01",
     company: "ITD Tech",
     role: "Software Engineer",
     project: "Language Connector / SmartConX",
